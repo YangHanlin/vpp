@@ -868,3 +868,11 @@ endif
 .PHONY: check-dpdk-mlx
 check-dpdk-mlx:
 	@[ $$($(MAKE) -sC build/external dpdk-show-DPDK_MLX_DEFAULT) = y ]
+
+.PHONY: compile-commands
+compile-commands:
+	$(MAKE) wipe
+	bear --output compile_commands.new.json -- $(MAKE) build
+	mv -f compile_commands.new.json compile_commands.json
+	compdb -p . list > compile_commands.new.json
+	mv -f compile_commands.new.json compile_commands.json
