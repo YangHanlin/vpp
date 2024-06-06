@@ -105,6 +105,10 @@ else ifeq ($(OS_VERSION_ID),20.04)
 else ifeq ($(OS_VERSION_ID),20.10)
 	DEB_DEPENDS += clang clang-format-11
 	LIBFFI=libffi8ubuntu1
+else ifeq ($(OS_VERSION_ID),24.04)
+	# FIXME: Is it OK to use latest clang & clang-format?
+	DEB_DEPENDES += clang clang-format
+	LIBFFI=libffi8
 else ifeq ($(OS_ID)-$(OS_VERSION_ID),debian-10)
 	DEB_DEPENDS += virtualenv
 else ifeq ($(OS_ID)-$(OS_VERSION_ID),debian-11)
